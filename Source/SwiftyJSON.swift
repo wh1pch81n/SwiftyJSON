@@ -71,7 +71,61 @@ public struct JSON {
             self.init(NSNull())
         }
     }
+	
+	/**
+		Creates a JSON using the plist path.
+	
+		:param: plistFromFile The name of the plist
+		:param: options The JSON serialization reading options. `.AllowFragments` by default.
+		:param: error error The NSErrorPointer used to return the error. `nil` by default.
     
+		:returns: The created JSON
+	*/
+	public init(plistFromFile fileName: String, options: NSJSONReadingOptions = .AllowFragments, error: NSErrorPointer = nil) {
+		if let
+		path = NSBundle.mainBundle().pathForResource(fileName, ofType: "plist"),
+		arr = NSArray(contentsOfFile: path),
+		jsonData = NSJSONSerialization.dataWithJSONObject(arr, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+		{
+			self.init(data: jsonData, options: options, error: error)
+		} else if let
+			path = NSBundle.mainBundle().pathForResource(fileName, ofType: "plist"),
+			dict = NSDictionary(contentsOfFile: path),
+			jsonData = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+		{
+			self.init(data: jsonData, options: options, error: error)
+		} else
+		{
+			self.init(NSNull())
+		}
+	}
+	
+	/**
+		Creates a JSON using the plist url.
+	
+		:param: plistFromURL The URL to the plist
+		:param: options The JSON serialization reading options. `.AllowFragments` by default.
+		:param: error error The NSErrorPointer used to return the error. `nil` by default.
+    
+		:returns: The created JSON
+	*/
+	public init(plistFromURL url: NSURL, options: NSJSONReadingOptions = .AllowFragments, error: NSErrorPointer = nil) {
+		if let
+			arr = NSArray(contentsOfURL: url),
+			jsonData = NSJSONSerialization.dataWithJSONObject(arr, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+		{
+			self.init(data: jsonData, options: options, error: error)
+		} else if let
+			dict = NSDictionary(contentsOfURL: url),
+			jsonData = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+		{
+			self.init(data: jsonData, options: options, error: error)
+		} else
+		{
+			self.init(NSNull())
+		}
+	}
+	
     /**
     Creates a JSON using the object.
     
