@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>text</key>
+	<string>Just some text</string>
+	<key>truncated</key>
+	<false/>
+	<key>created_at</key>
+	<date>2015-04-28T18:15:13Z</date>
+	<key>answerToEverything</key>
+	<integer>42</integer>
+	<key>user_mentions</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Cal</string>
+			<key>id_str</key>
+			<string>17445752</string>
+			<key>id</key>
+			<integer>17445752</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Jersey</string>
+			<key>id_str</key>
+			<string>619837</string>
+			<key>id</key>
+			<integer>619837</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
